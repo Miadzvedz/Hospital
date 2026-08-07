@@ -1,5 +1,4 @@
-# AGSR_test_task
-Test task for the AGSR company 
+# Hospital (client - server)
 
  - [x] 1. Создать RESTAPI приложение, которое содержит CRUD-методы для сущности Patient
 (предположим, что это рожденные в роддоме дети).

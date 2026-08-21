@@ -14,7 +14,7 @@ namespace Hospital_API.Controllers;
 
 [ApiController]
 [Produces("application/json")]
-[Route("api/patient")]
+[Route("hospital/patient")]
 public class PatientController : ControllerBase
 {
     private readonly IMediator _mediator;

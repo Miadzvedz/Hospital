@@ -11,20 +11,14 @@ using System.Text.Json.Serialization;
 using Hospital_API.Extensions;
 
 
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-var builder = WebApplication.CreateBuilder(args);
 
-#region Logger
 ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
 ILogger logger = loggerFactory.CreateLogger<Program>();
-#endregion
 
-#region Database
-builder.Services.AddMsSQLDatabase();
-//builder.Services.AddDbContext<AppDBContext>(opt =>
-//    opt.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
-#endregion
 
+builder.Services.AddMsSQLDatabase(builder.Configuration, logger);
 
 builder.Services.AddTransient<ExceptionHandler>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
@@ -48,22 +42,21 @@ builder.Services.AddSwaggerGen(options =>
         Contact = new OpenApiContact
         {
             Name = "Alexander Medved",
-            Url = new Uri("https://github.com/Grizzly-Alex")
+            Url = new Uri("https://github.com/Miadzvedz")
         }
     });
 
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     options.IncludeXmlComments(xmlPath);
 });
-
 
 
 var app = builder.Build();
 
 
 #region Adding Migration
-using (var scope = app.Services.CreateScope()) 
+using (IServiceScope scope = app.Services.CreateScope()) 
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDBContext>();
     try

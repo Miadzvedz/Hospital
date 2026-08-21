@@ -1,5 +1,5 @@
 ﻿{
   "scheme": "https",
   "host": "localhost:7000",
-  "path": "/api/patient/batch"
+  "path": "/hospital/patient/batch"
 }

@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # --- Data Base MS SQL ---
+  mssql:
+    image: ://microsoft.com
+    container_name: hospital-mssql-db
+    environment:
+      - ACCEPT_EULA=Y # We accept the license agreement
+      - MSSQL_SA_PASSWORD=123@strongPass # Password for the system administrator (sa)
+    ports:
+      - "1433:1433" # Access to the database from your computer
+
+   
+  # --- WEB API service ---
+  web-api:
+    image: hospital-web-api
+    build:
+      context: ./API  # path to the api folder relative to this file
+      dockerfile: Dockerfile  # Dockerfile name which located inside this folder 
+    ports:
+      - "7000:8080"  # port forwarding: http://localhost:7000 on your PC
+    environment:
+      - DB_HOST=mssql
+      - DB_NAME=hospital-mssql-db
+      - DB_USER=sa 
+      - DB_PASSWORD=123@strongPass
+    depends_on:
+      - mssql # The API will only start running after the database container has started.
+
+
+  # --- Console client service ---
+  console-client:
+    image: hospital-console-client
+    build:
+      context: ./Client # Path to folder with console content
+      dockerfile: Dockerfile # Dockerfile name which located inside this folder 
+    depends_on:
+      - web-api
+    environment:
+      - ApiBaseUrl=http://web-api:8080 # Internal URL for container communication

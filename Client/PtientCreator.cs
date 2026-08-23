@@ -7,13 +7,13 @@ namespace ConsoleClient;
 
 public class PtientCreator
 {
-    private static readonly femaleSurnames = new List<String>(10)
+    private static readonly List<string> femaleSurnames = new(10)
     {
         "Сергеевна", "Владимировна", "Семёновна", "Дмитриевна", "Александровна",
         "Ивановна", "Генадьевна", "Анатольевна", "Петровна", "Кузьминична"
     };
 
-    private static readonly maleSurnames = new List<String>(10)
+    private static readonly List<string> maleSurnames = new (10)
     {
         "Сергеевич", "Владимирович", "Семёновнович", "Дмитриевич", "Александрович",
         "Иванович", "Генадьевич", "Анатольевич", "Петрович", "Валерьевич"

@@ -27,7 +27,7 @@ public static class HospitalApiRequests
             response.EnsureSuccessStatusCode();
 
             //change console text to event
-            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[SUCCESS] The patient batch was successfully sent and processed by the API.");
             Console.ResetColor();
 
@@ -35,7 +35,7 @@ public static class HospitalApiRequests
         catch (HttpRequestException ex) 
         {
             //change console text to event
-            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"[ERROR] API request error. Status: {ex.StatusCode}. Message: {ex.Message}");
             Console.ResetColor();
 

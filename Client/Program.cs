@@ -9,10 +9,18 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var patients = PtientCreator.CreatePatients(1);
+        Console.WriteLine("Write count patients");
+        string input = Console.ReadLine();
 
-        await HospitalApiRequests.PostBatch(patients);
-
-        Console.ReadLine();       
+        if(int.TryParse(input, out int count))
+        {
+            var patients = PtientCreator.CreatePatients(count);
+            await HospitalApiRequests.PostBatch(patients);
+        }
+        else
+        {
+            Console.WriteLine("Incorrect value, enter a number please.");
+        }
+            Console.ReadLine();       
     }
 }

@@ -1,67 +1,51 @@
-﻿using ConsoleApp.Models;
+﻿using Client.Options;
+using ConsoleApp.Models;
+using ConsoleClient;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
 
-namespace ConsoleClient;
+namespace Client;
 
 class Program
 {
-    static readonly HttpClient Client = new HttpClient();    
+    static readonly HttpClient Client = new HttpClient();
 
 
     static async Task Main(string[] args)
     {
-        Url url = await GetUrl();
 
-        if (string.IsNullOrEmpty(url.Scheme) && string.IsNullOrEmpty(url.Host))
-            return;
+        string baseUrl = AppConfig.HospitalRoutes.BaseUrl;
+        string patientBatch = AppConfig.HospitalRoutes.Endpoints.PatientBatch;
 
-        Client.BaseAddress = new Uri($"{url.Scheme}://{url.Host}");
+        Client.BaseAddress = new Uri(baseUrl);
         Client.DefaultRequestHeaders.Accept.Clear();
         Client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
         var patientList = PtientCreator.CreatePatients(100);
 
-        await PostBatch(patientList, url.Path);
+        await PostBatch(patientList, patientBatch);
 
-        Console.ReadLine();
-         
+        Console.ReadLine();       
     }
 
 
-    private static async Task<Url> GetUrl()
+
+    private static async Task PostBatch(List<Patient> patients, string endpoint)
     {
-        string basePath = AppDomain.CurrentDomain.BaseDirectory;
-        string urlPath = Path.Combine(basePath, "url.json");
-
-        using (FileStream fs = File.OpenRead(urlPath))
-        {
-            var options = new JsonSerializerOptions()
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
-            return await JsonSerializer.DeserializeAsync<Url>(fs, options)
-                ?? throw new FileNotFoundException();
-        }
-    }
-
-
-    private static async Task PostBatch(List<Patient> patients, string path)
-    {
+        
         if (!patients.Any())
-            Console.WriteLine("The patient list is empty");
+            Console.WriteLine("The patient list is empty");// переписать на эксепшен
 
-        if (string.IsNullOrEmpty(path))
-            Console.WriteLine("Request path not provided");
+        if (string.IsNullOrEmpty(endpoint))
+            Console.WriteLine("Request path not provided");// переписать на эксепшен
 
 
         try
         {
-            var response = await Client.PostAsJsonAsync(path, patients);
+            var response = await Client.PostAsJsonAsync(endpoint, patients);
             response.EnsureSuccessStatusCode();
 
             Console.ForegroundColor = ConsoleColor.Green;

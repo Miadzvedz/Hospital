@@ -1,5 +1,0 @@
-﻿{
-  "scheme": "https",
-  "host": "localhost:7000",
-  "path": "/hospital/patient/batch"
-}

@@ -1,19 +1,26 @@
-﻿using Client.Options;
+﻿using Client.Route;
+using System;
 using System.Text.Json;
 
 namespace Client;
 
 public static class AppConfig
 {
-    public static HospitalApiOptions HospitalRoutes { get; private set; }
+    public static Routes HospitalRoutes { get; private set; }
 
     static AppConfig()
     {
-        HospitalRoutes = GetHospitalApiOptions();
-
+        HospitalRoutes = GetHospitalApiRoutes() 
+            ?? throw new NullReferenceException("Critical startup error: routes were not provided");
     }
 
-    private static HospitalApiOptions GetHospitalApiOptions()
+
+    private static Routes? GetHospitalApiRoutes() =>
+        GetHospitalApiRoutesFromContainer() 
+        ?? GetHospitalApiRoutesFromLocal();
+
+
+    private static Routes? GetHospitalApiRoutesFromLocal()
     {
         string basePath = AppDomain.CurrentDomain.BaseDirectory;
         string urlPath = Path.Combine(basePath, "appsettings.json");
@@ -24,7 +31,21 @@ public static class AppConfig
             PropertyNameCaseInsensitive = true
         };
 
-        return JsonSerializer.Deserialize<HospitalApiOptions>(fs, options)
-            ?? throw new FileNotFoundException();
+        return JsonSerializer.Deserialize<Routes>(fs, options);
+    }
+
+
+    private static Routes? GetHospitalApiRoutesFromContainer()
+    {
+        string? jsonConfig = Environment.GetEnvironmentVariable("HOSPITAL_API_CONFIG");
+
+        if (string.IsNullOrWhiteSpace(jsonConfig)) return null;
+            
+        var jsonOptions = new JsonSerializerOptions()
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        return JsonSerializer.Deserialize<Routes>(jsonConfig, jsonOptions);
     }
 }

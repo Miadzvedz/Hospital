@@ -38,4 +38,7 @@ services:
     depends_on:
       - web-api
     environment:
-      - ApiBaseUrl=http://web-api:8080 # Internal URL for container communication
+      - HOSPITAL_API_CONFIG='{
+        "BaseUrl":"http://web-api:8080/",
+        "Endpoints":{
+          "PatientBatch":"hospital/patient/batch"}}'

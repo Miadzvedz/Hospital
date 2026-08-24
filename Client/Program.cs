@@ -1,9 +1,8 @@
-﻿using Client.Options;
-using ConsoleApp.Models;
+﻿using ConsoleApp.Models;
 using ConsoleClient;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Text.Json;
+
 
 
 namespace Client;

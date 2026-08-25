@@ -1,0 +1,35 @@
+name: hospital
+
+services:
+  db:
+    container_name: mssql_server
+    environment:
+      - ACCEPT_EULA=Y 
+      - MSSQL_SA_PASSWORD=123@strongPass
+    ports:
+      - "5434:1433"
+
+  api:
+    container_name: hospital-api
+    ports:
+      - "7000:8080"
+    environment:
+      - DB_HOST=mssql
+      - DB_NAME=hospital-mssql-db
+      - DB_USER=sa 
+      - DB_PASSWORD=123@strongPass
+    depends_on:
+      - db
+
+  client:
+    container_name: hospital-client
+    depends_on:
+      - api
+    environment:
+      - HOSPITAL_API_CONFIG=|
+        {
+          "BaseUrl":"http://api:8080/",
+          "Endpoints":{
+            "PatientBatch":"hospital/patient/batch"
+            }
+        }

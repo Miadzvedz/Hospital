@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  api:
+    image: ${DOCKER_REGISTRY-}hospital-api
+    build:
+      context: API
+      dockerfile: Dockerfile
+
+  client:
+    image: ${DOCKER_REGISTRY-}hospital-client
+    build:
+      context: Client
+      dockerfile: Dockerfile

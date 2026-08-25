@@ -1,14 +1,14 @@
+using AutoMapper;
 using Hospital_API.Data;
 using Hospital_API.Data.Models;
+using Hospital_API.Extensions;
 using Hospital_API.Interfaces;
 using Hospital_API.Utilities;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Hospital_API.Extensions;
 
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -17,8 +17,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
 ILogger logger = loggerFactory.CreateLogger<Program>();
 
-
-builder.Services.AddMsSQLDatabase(builder.Configuration, logger);
+builder.Services.AddDbContext<AppDBContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddTransient<ExceptionHandler>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));

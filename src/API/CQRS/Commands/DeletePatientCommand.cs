@@ -1,5 +1,5 @@
-﻿using Hospital_API.CQRS.Interfaces;
+﻿using API.CQRS.Interfaces;
 
-namespace Hospital_API.CQRS.Commands;
+namespace API.CQRS.Commands;
 
 public record class DeletePatientCommand(Guid Id) : ICommand;

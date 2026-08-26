@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Hospital_API.Interfaces
+namespace API.Interfaces
 {
     public interface IRepository<TEntity>
         where TEntity : IAggregateRoot

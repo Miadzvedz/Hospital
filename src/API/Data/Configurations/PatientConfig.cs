@@ -1,10 +1,10 @@
-﻿using Hospital_API.Constants;
-using Hospital_API.Data.Converters;
-using Hospital_API.Data.Models;
+﻿using API.Constants;
+using API.Data.Converters;
+using API.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Hospital_API.Data.Configurations;
+namespace API.Data.Configurations;
 
 public class PatientConfig : IEntityTypeConfiguration<Patient>
 {

@@ -1,7 +1,7 @@
-﻿using Hospital_API.CQRS.Interfaces;
-using Hospital_API.Requests;
+﻿using API.CQRS.Interfaces;
+using API.Requests;
 
 
-namespace Hospital_API.CQRS.Commands;
+namespace API.CQRS.Commands;
 
 public record class UpdatePatientCommand(PatientUpdateRequest Request) : ICommand;

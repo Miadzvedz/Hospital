@@ -1,4 +1,4 @@
-﻿namespace Hospital_API.Constants;
+﻿namespace API.Constants;
 
 public enum Genders : byte
 {

@@ -1,9 +1,9 @@
-﻿using Hospital_API.ValueTypes;
+﻿using API.ValueTypes;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Text.Json;
 
-namespace Hospital_API.Utilities
+namespace API.Utilities
 {
     public sealed class ExceptionHandler : IMiddleware
     {

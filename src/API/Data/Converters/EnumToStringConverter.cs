@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Newtonsoft.Json;
 
-namespace Hospital_API.Data.Converters;
+namespace API.Data.Converters;
 
 public class EnumToStringConverter<TEnum> : ValueConverter<TEnum, string>
     where TEnum : Enum

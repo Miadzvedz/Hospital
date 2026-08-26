@@ -1,13 +1,13 @@
-﻿using Hospital_API.CQRS.Commands;
-using Hospital_API.Data.Models;
-using Hospital_API.Interfaces;
-using Hospital_API.Responses;
-using Hospital_API.ValueTypes;
+﻿using API.CQRS.Commands;
+using API.Data.Models;
+using API.Interfaces;
+using API.Responses;
+using API.ValueTypes;
 using AutoMapper;
-using Hospital_API.CQRS.Interfaces;
+using API.CQRS.Interfaces;
 
 
-namespace Hospital_API.CQRS.Handlers;
+namespace API.CQRS.Handlers;
 
 public class BatchPatientHandler : ICommandHandler<BatchPatientCommand, IEnumerable<PatientResponse>>
 {

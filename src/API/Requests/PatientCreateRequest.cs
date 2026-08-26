@@ -1,8 +1,8 @@
-﻿using Hospital_API.Constants;
+﻿using API.Constants;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Hospital_API.Requests
+namespace API.Requests
 {
     public class PatientCreateRequest
     {

@@ -1,6 +1,6 @@
-﻿using Hospital_API.Constants;
+﻿using API.Constants;
 
-namespace Hospital_API.Extensions;
+namespace API.Extensions;
 
 public static class StringExtensions
 {

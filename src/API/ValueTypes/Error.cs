@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Hospital_API.ValueTypes
+namespace API.ValueTypes
 {
     public record Error(string messageError)
     {

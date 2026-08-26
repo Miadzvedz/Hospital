@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Hospital_API.ValueTypes;
+namespace API.ValueTypes;
 
 public class Result
 {

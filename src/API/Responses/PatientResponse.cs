@@ -1,7 +1,7 @@
-﻿using Hospital_API.Constants;
+﻿using API.Constants;
 
 
-namespace Hospital_API.Responses;
+namespace API.Responses;
 
 public record class PatientResponse(
     PatienNameResponse Name,

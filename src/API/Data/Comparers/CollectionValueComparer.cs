@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Hospital_API.Data.Comparers;
+namespace API.Data.Comparers;
 
 public class CollectionValueComparer<T> : ValueComparer<ICollection<T>>
 {

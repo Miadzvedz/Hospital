@@ -1,8 +1,8 @@
-﻿using Hospital_API.Data.Models;
+﻿using API.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace Hospital_API.Data;
+namespace API.Data;
 
 public class AppDBContext : DbContext
 {

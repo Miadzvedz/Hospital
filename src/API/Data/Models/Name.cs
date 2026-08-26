@@ -1,4 +1,4 @@
-﻿namespace Hospital_API.Data.Models;
+﻿namespace API.Data.Models;
 
 public class Name : BaseEntity<Guid>
 {

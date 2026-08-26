@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Newtonsoft.Json;
 
-namespace Hospital_API.Data.Converters;
+namespace API.Data.Converters;
 
 public class CollectionToJsonConverter<T> : ValueConverter<ICollection<T>, string>
 {

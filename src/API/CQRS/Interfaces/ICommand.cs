@@ -1,7 +1,7 @@
-﻿using Hospital_API.ValueTypes;
+﻿using API.ValueTypes;
 using MediatR;
 
-namespace Hospital_API.CQRS.Interfaces;
+namespace API.CQRS.Interfaces;
 
 public interface ICommand : IRequest<Result>
 {

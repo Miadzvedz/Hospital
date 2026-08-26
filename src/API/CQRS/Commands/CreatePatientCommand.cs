@@ -1,8 +1,8 @@
-﻿using Hospital_API.CQRS.Interfaces;
-using Hospital_API.Requests;
-using Hospital_API.Responses;
+﻿using API.CQRS.Interfaces;
+using API.Requests;
+using API.Responses;
 
-namespace Hospital_API.CQRS.Commands;
+namespace API.CQRS.Commands;
 
 public record class CreatePatientCommand(PatientCreateRequest Request) : ICommand<PatientResponse>;
 

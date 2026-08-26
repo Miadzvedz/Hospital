@@ -1,9 +1,9 @@
 using AutoMapper;
-using Hospital_API.Data;
-using Hospital_API.Data.Models;
-using Hospital_API.Extensions;
-using Hospital_API.Interfaces;
-using Hospital_API.Utilities;
+using API.Data;
+using API.Data.Models;
+using API.Extensions;
+using API.Interfaces;
+using API.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;

@@ -1,10 +1,10 @@
-﻿using Hospital_API.Data.Comparers;
-using Hospital_API.Data.Converters;
-using Hospital_API.Data.Models;
+﻿using API.Data.Comparers;
+using API.Data.Converters;
+using API.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Hospital_API.Data.Configurations
+namespace API.Data.Configurations
 {
     public class NameConfig : IEntityTypeConfiguration<Name>
     {

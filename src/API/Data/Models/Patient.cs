@@ -1,6 +1,6 @@
-﻿using Hospital_API.Constants;
+﻿using API.Constants;
 
-namespace Hospital_API.Data.Models;
+namespace API.Data.Models;
 
 public class Patient : BaseEntity<Guid>
 {

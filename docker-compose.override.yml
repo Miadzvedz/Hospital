@@ -21,8 +21,6 @@ services:
 
   client:
     container_name: hospital-client
-    stdin_open: true
-    tty: true 
     depends_on:
       - api
     environment:

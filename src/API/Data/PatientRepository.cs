@@ -1,9 +1,9 @@
-﻿using Hospital_API.Data.Models;
-using Hospital_API.Interfaces;
-using Hospital_API.ValueTypes;
+﻿using API.Data.Models;
+using API.Interfaces;
+using API.ValueTypes;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-namespace Hospital_API.Data;
+namespace API.Data;
 
 public class PatientRepository : IRepository<Patient>
 {

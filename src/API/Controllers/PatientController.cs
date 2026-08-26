@@ -1,16 +1,16 @@
-﻿using Hospital_API.Constants;
-using Hospital_API.CQRS.Commands;
-using Hospital_API.CQRS.Queries;
-using Hospital_API.Extensions;
-using Hospital_API.Requests;
-using Hospital_API.Responses;
-using Hospital_API.ValueTypes;
+﻿using API.Constants;
+using API.CQRS.Commands;
+using API.CQRS.Queries;
+using API.Extensions;
+using API.Requests;
+using API.Responses;
+using API.ValueTypes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 
-namespace Hospital_API.Controllers;
+namespace API.Controllers;
 
 [ApiController]
 [Produces("application/json")]

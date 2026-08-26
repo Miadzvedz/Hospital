@@ -1,15 +1,15 @@
-﻿using Hospital_API.Constants;
-using Hospital_API.CQRS.Queries;
-using Hospital_API.Data.Models;
-using Hospital_API.Interfaces;
-using Hospital_API.Responses;
-using Hospital_API.ValueTypes;
+﻿using API.Constants;
+using API.CQRS.Queries;
+using API.Data.Models;
+using API.Interfaces;
+using API.Responses;
+using API.ValueTypes;
 using AutoMapper;
 using System.Linq.Expressions;
-using Hospital_API.CQRS.Interfaces;
+using API.CQRS.Interfaces;
 
 
-namespace Hospital_API.CQRS.Handlers;
+namespace API.CQRS.Handlers;
 
 public class GetAllPatientsByBirthDateHandler
     : IQueryHandler<GetAllPatientsByBirthDateQuery, IEnumerable<PatientResponse>>

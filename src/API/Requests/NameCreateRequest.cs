@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Hospital_API.Requests
+namespace API.Requests
 {
     public class NameCreateRequest
     {

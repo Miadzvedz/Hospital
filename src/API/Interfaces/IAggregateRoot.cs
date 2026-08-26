@@ -1,4 +1,4 @@
-﻿namespace Hospital_API.Interfaces
+﻿namespace API.Interfaces
 {
     public interface IAggregateRoot
     {

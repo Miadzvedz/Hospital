@@ -5,11 +5,11 @@ services:
   api:
     image: ${DOCKER_REGISTRY-}hospital-api
     build:
-      context: .
-      dockerfile: src/API/Dockerfile
+      context: ./src/API
+      dockerfile: Dockerfile
 
   client:
     image: ${DOCKER_REGISTRY-}hospital-client
     build:
-      context: .
-      dockerfile: src/Client/Dockerfile
+      context: ./src/Client
+      dockerfile: Dockerfile

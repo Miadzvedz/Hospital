@@ -1,7 +1,7 @@
-﻿using Hospital_API.CQRS.Interfaces;
-using Hospital_API.Responses;
+﻿using API.CQRS.Interfaces;
+using API.Responses;
 
-namespace Hospital_API.CQRS.Queries
+namespace API.CQRS.Queries
 {
     public record class GetPatientByIdQuery(Guid Id) : IQuery<PatientResponse>;
 }

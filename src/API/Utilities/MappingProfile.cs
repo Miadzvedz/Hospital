@@ -1,9 +1,9 @@
-﻿using Hospital_API.Data.Models;
-using Hospital_API.Requests;
-using Hospital_API.Responses;
+﻿using API.Data.Models;
+using API.Requests;
+using API.Responses;
 using AutoMapper;
 
-namespace Hospital_API.Utilities;
+namespace API.Utilities;
 
 public class MappingProfile : Profile
 {

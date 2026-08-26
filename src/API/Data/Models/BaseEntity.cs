@@ -1,6 +1,6 @@
-﻿using Hospital_API.Interfaces;
+﻿using API.Interfaces;
 
-namespace Hospital_API.Data.Models;
+namespace API.Data.Models;
 
 public class BaseEntity<T> : IAggregateRoot
     where T : struct

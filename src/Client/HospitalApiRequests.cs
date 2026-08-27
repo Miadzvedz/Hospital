@@ -1,4 +1,4 @@
-﻿using ConsoleApp.Models;
+﻿using Client.Models;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
@@ -12,8 +12,7 @@ public static class HospitalApiRequests
     {
         Client.BaseAddress = new Uri(AppConfig.HospitalRoutes.BaseUrl);
         Client.DefaultRequestHeaders.Accept.Clear();
-        Client.DefaultRequestHeaders.Accept.Add(
-        new MediaTypeWithQualityHeaderValue("application/json"));
+        Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
 
 

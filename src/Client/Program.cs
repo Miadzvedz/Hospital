@@ -1,26 +1,16 @@
-﻿using ConsoleClient;
-
-
-namespace Client;
-
-
+﻿namespace Client;
 
 class Program
 {
     static async Task Main(string[] args)
     {
-        Console.WriteLine("Write count patients");
-        string input = Console.ReadLine();
+        await HealthCheck.TryConnectToApiAsync(AppConfig.HospitalRoutes.BaseUrl);
 
-        if(int.TryParse(input, out int count))
-        {
-            var patients = PtientCreator.CreatePatients(count);
-            await HospitalApiRequests.PostBatch(patients);
-        }
-        else
-        {
-            Console.WriteLine("Incorrect value, enter a number please.");
-        }
-            Console.ReadLine();       
+
+
+
+        var patients = PatientCreator.CreatePatients(1);
+
+        await HospitalApiRequests.PostBatch(patients);   
     }
 }

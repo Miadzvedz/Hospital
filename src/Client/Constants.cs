@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp;
+﻿namespace Client;
 
 
 public enum Genders : byte

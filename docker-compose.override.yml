@@ -1,7 +1,7 @@
 name: hospital
 
 services:
-  mssql:
+  db:
     container_name: hospital_db
     environment:
       - ACCEPT_EULA=Y 
@@ -14,20 +14,25 @@ services:
     ports:
       - "7000:8080"
     environment:
+      - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=mssql;Database=Hospital_Db;User Id=sa;Password=123@strongPass;TrustServerCertificate=True;
+      - ConnectionStrings__DefaultConnection=Server=db;Database=Hospital_Db;User Id=sa;Password=123@strongPass;TrustServerCertificate=True;
     depends_on:
-      - mssql
+      - db
+
 
   client:
     container_name: hospital-client
-    depends_on:
-      - api
     environment:
-      - HOSPITAL_API_CONFIG=|
+      - HOSPITAL_API_CONFIG=
         {
           "BaseUrl":"http://api:8080/",
           "Endpoints":{
             "PatientBatch":"hospital/patient/batch"
             }
         }
+    depends_on:
+      - api
+    stdin_open: true
+    tty: true
+

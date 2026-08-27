@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp.Models;
+﻿namespace Client.Models;
 
 public class Patient
 {

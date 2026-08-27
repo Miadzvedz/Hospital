@@ -1,11 +1,10 @@
 ﻿using Bogus;
 using Bogus.DataSets;
-using ConsoleApp;
-using ConsoleApp.Models;
+using Client.Models;
 
-namespace ConsoleClient;
+namespace Client;
 
-public class PtientCreator
+public class PatientCreator
 {
     private static readonly List<string> femaleSurnames = new(10)
     {

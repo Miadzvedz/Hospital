@@ -1,5 +1,5 @@
 services:
-  mssql:
+  db:
     image: mcr.microsoft.com/mssql/server:2017-latest
 
   api:

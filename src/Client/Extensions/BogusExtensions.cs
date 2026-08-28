@@ -1,26 +1,34 @@
 ﻿using Bogus;
 using Bogus.DataSets;
-using System.Text.Json;
 using static Bogus.DataSets.Name;
 
 namespace Client.Extensions;
 
 public static class BogusExtensions
 {
-    static private List<string> FemalePatronymic { get; }
-    static private List<string> MalePatronymic { get; }
+    static private List<string> FemalePatronymic => new() {
+        "Сергеевна",
+        "Владимировна",
+        "Семёновна",
+        "Дмитриевна", 
+        "Александровна", 
+        "Ивановна", 
+        "Генадьевна", 
+        "Анатольевна",
+        "Петровна",
+        "Кузьминична" };
 
-    static BogusExtensions()
-    {
-        string urlpath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "patronymics.json");
-
-        using FileStream fs = File.OpenRead(urlpath);
-        using JsonDocument doc = JsonDocument.Parse(fs);
-
-        FemalePatronymic = doc.RootElement.GetProperty("femalePatronymic").Deserialize<List<string>>() ?? new();
-        MalePatronymic = doc.RootElement.GetProperty("malePatronymic").Deserialize<List<string>>() ?? new();
-    }
-
+    static private List<string> MalePatronymic => new() {
+        "Сергеевич", 
+        "Владимирович", 
+        "Семёновнович", 
+        "Дмитриевич",
+        "Александрович",
+        "Иванович", 
+        "Генадьевич", 
+        "Анатольевич", 
+        "Петрович", 
+        "Валерьевич" };
 
     public static string Patronymic(this Name name, Gender? gender = null)
     {

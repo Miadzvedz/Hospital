@@ -1,22 +1,26 @@
 ﻿using Bogus;
 using Bogus.DataSets;
 using Client.Models;
+using System.Text.Json;
 
 namespace Client;
 
 public class PatientCreator
 {
-    private static readonly List<string> femaleSurnames = new(10)
-    {
-        "Сергеевна", "Владимировна", "Семёновна", "Дмитриевна", "Александровна",
-        "Ивановна", "Генадьевна", "Анатольевна", "Петровна", "Кузьминична"
-    };
+    static private  List<string> FemalePatronymic { get; }
+    static private List<string> MalePatronymic { get; }
 
-    private static readonly List<string> maleSurnames = new (10)
+
+    static PatientCreator()
     {
-        "Сергеевич", "Владимирович", "Семёновнович", "Дмитриевич", "Александрович",
-        "Иванович", "Генадьевич", "Анатольевич", "Петрович", "Валерьевич"
-    };
+        string urlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "patronymics.json");
+
+        using FileStream fs = File.OpenRead(urlPath);
+        using JsonDocument doc = JsonDocument.Parse(fs);
+
+        FemalePatronymic = doc.RootElement.GetProperty("femalePatronymic").Deserialize<List<string>>() ?? new();
+        MalePatronymic = doc.RootElement.GetProperty("malePatronymic").Deserialize<List<string>>() ?? new();
+    }
 
 
     static public List<Patient> CreatePatients(int count)
@@ -54,20 +58,20 @@ public class PatientCreator
             {
                 facePatient.Name = nameMaleGenerator.Generate();
 
-                int index = random.Next(maleSurnames.Count);
-                facePatient.Name.Given.Add(maleSurnames[index]);
+                int index = random.Next(MalePatronymic.Count);
+                facePatient.Name.Given.Add(MalePatronymic[index]);
             }
             else if (facePatient.Gender == Genders.Female)
             {
                 facePatient.Name = nameFemaleGenerator.Generate();
-                int index = random.Next(femaleSurnames.Count);
-                facePatient.Name.Given.Add(femaleSurnames[index]);
+                int index = random.Next(FemalePatronymic.Count);
+                facePatient.Name.Given.Add(FemalePatronymic[index]);
             }
             else
             {
                 facePatient.Name = nameMaleGenerator.Generate();
-                int index = random.Next(femaleSurnames.Count);
-                facePatient.Name.Given.Add(femaleSurnames[index]);
+                int index = random.Next(FemalePatronymic.Count);
+                facePatient.Name.Given.Add(FemalePatronymic[index]);
             }
 
             patients.Add(facePatient);

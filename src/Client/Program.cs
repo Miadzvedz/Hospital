@@ -1,4 +1,6 @@
-﻿namespace Client;
+﻿using Client.Models;
+
+namespace Client;
 
 class Program
 {
@@ -6,7 +8,7 @@ class Program
     {
         await HealthCheck.TryConnectToApiAsync(AppConfig.HospitalRoutes.BaseUrl);
 
-        var patients = PatientCreator.CreatePatients(100);
+        List<Patient> patients = PatientCreator.CreatePatients(7);
 
         await HospitalApiRequests.PostBatch(patients);
     }

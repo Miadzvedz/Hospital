@@ -8,4 +8,3 @@ public enum Genders : byte
     Female = 2,
     Other = 3,
 }
-

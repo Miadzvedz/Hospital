@@ -8,7 +8,7 @@ class Program
     {
         await HealthCheck.TryConnectToApiAsync(AppConfig.HospitalRoutes.BaseUrl);
 
-        List<Patient> patients = PatientCreator.CreatePatients(7);
+        List<Patient> patients = PatientCreator.CreatePatients(100);
 
         await HospitalApiRequests.PostBatch(patients);
     }
